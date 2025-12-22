@@ -1,7 +1,7 @@
 // Mande by Andres-cmk
-package org.example.data_structures.DSLineales;
+package org.algoritmos.data_structures.DSLineales;
 
-import org.example.data_structures.Node;
+import org.algoritmos.data_structures.Node;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

@@ -1,4 +1,4 @@
-package org.example.data_structures;
+package org.algoritmos.data_structures;
 
 public class Node<E> {
     Node<E> next;

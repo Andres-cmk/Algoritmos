@@ -1,7 +1,7 @@
 // Mande by Andres-cmk
-package org.example.algorithms;
+package org.algoritmos.algorithms;
 
-import org.example.data_structures.DSLineales.Array;
+import org.algoritmos.data_structures.DSLineales.Array;
 
 
 public class QuickSort {

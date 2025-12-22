@@ -1,4 +1,4 @@
-package org.example.data_structures.Trees;
+package org.algoritmos.data_structures.Trees;
 
 public class BinarySearchTree {
 
