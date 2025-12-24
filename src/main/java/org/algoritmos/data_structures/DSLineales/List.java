@@ -7,11 +7,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
-public class Array<T> implements Iterable<T> {
+public class Lista<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
             private int index = 0;
             @Override
             public boolean hasNext() {
@@ -37,7 +37,7 @@ public class Array<T> implements Iterable<T> {
     private Node<T> last;
     private int size;
 
-    public Array() {
+    public Lista() {
         firts = null;
         last = null;
         size = 0;
