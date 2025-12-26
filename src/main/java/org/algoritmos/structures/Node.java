@@ -1,4 +1,7 @@
-package org.algoritmos.data_structures;
+/**
+ * @autor Andres Ramirez (Andres-cmk)
+ */
+package org.algoritmos.structures;
 
 public class Node<E> {
     Node<E> next;
@@ -7,7 +10,6 @@ public class Node<E> {
 
     public Node(E value) {
         next = null;
-
         this.value = value;
     }
 
