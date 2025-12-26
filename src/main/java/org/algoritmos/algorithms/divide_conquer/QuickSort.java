@@ -1,12 +1,12 @@
 // Mande by Andres-cmk
-package org.algoritmos.algorithms;
+package org.algoritmos.algorithms.Dividir_Conquistar;
 
-import org.algoritmos.data_structures.DSLineales.Array;
+import org.algoritmos.data_structures.linear.List;
 
 
 public class QuickSort {
 
-    public int partition(Array A, int p, int r){
+    public int partition(List A, int p, int r){
         int x = (int) A.get(r);
         int i = p - 1;
         for (int j = p; j < r; j++) {
@@ -23,7 +23,7 @@ public class QuickSort {
         return i + 1;
     }
 
-    public void quickSort(Array A, int p, int r){
+    public void quickSort(List A, int p, int r){
         if (p < r){
             int q = partition(A, p, r);
             quickSort(A, p, q-1);
@@ -32,7 +32,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        Array<Integer> A = new Array<>();
+        List<Integer> A = new List<>();
         A.add(2);
         A.add(8);
         A.add(7);
@@ -45,6 +45,6 @@ public class QuickSort {
         int r = A.size() - 1;
         QuickSort qs = new QuickSort();
         qs.quickSort(A, p, r);
-        A.print();
+        System.out.println(A);
     }
 }

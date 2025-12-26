@@ -1,13 +1,18 @@
 // Mande by Andres-cmk
-package org.algoritmos.data_structures.DSLineales;
+package org.algoritmos.data_structures.linear;
 
 import org.algoritmos.data_structures.Node;
+
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
-public class Lista<T> implements Iterable<T> {
+public class List<T> implements Iterable<T> {
+
+    private Node<T> firts;
+    private Node<T> last;
+    private int size;
 
     @Override
     public Iterator<T> iterator() {
@@ -33,11 +38,8 @@ public class Lista<T> implements Iterable<T> {
         Iterable.super.forEach(action);
     }
 
-    private Node<T> firts;
-    private Node<T> last;
-    private int size;
 
-    public Lista() {
+    public List() {
         firts = null;
         last = null;
         size = 0;
@@ -132,12 +134,17 @@ public class Lista<T> implements Iterable<T> {
         return -1;
     }
 
-    public void print(){
+    @Override
+    public String toString() {
         StringBuilder s = new StringBuilder();
         if (isEmpty()){
             s.append("[]");
             System.out.println(s);
-            return;
+            return "[]";
+        }
+        if (size == 1){
+            s.append("[").append(get(0)).append("]");
+            return s.toString();
         }
         s.append("[");
         Node<T> temp = firts;
@@ -146,7 +153,7 @@ public class Lista<T> implements Iterable<T> {
             temp = temp.getNext();
         }
         s.append(temp.getValue()).append("]");
-        System.out.println(s);
+        return s.toString();
     }
 
 }

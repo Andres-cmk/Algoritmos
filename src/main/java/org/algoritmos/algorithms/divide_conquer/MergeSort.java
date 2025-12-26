@@ -1,17 +1,17 @@
 // Mande by Andres-cmk
-package org.algoritmos.algorithms;
+package org.algoritmos.algorithms.Dividir_Conquistar;
 
-import org.algoritmos.data_structures.DSLineales.Array;
+import org.algoritmos.data_structures.linear.List;
 
 public class MergeSort {
 
-    public void merge(Array A, int p, int q, int r) {
+    public void merge(List A, int p, int q, int r) {
 
         int nL = q - p + 1;
         int nR = r - q;
 
-        Array<Integer> L = new Array<>();
-        Array<Integer> R = new Array<>();
+        List<Integer> L = new List<>();
+        List<Integer> R = new List<>();
 
         for (int i = 0; i < nL; i++) {
             L.add( (int) A.get(p + i));
@@ -49,7 +49,7 @@ public class MergeSort {
 
 
 
-    public void mergeSort(Array A, int p, int r) {
+    public void mergeSort(List A, int p, int r) {
         if (p < r) {
             int q = (p + r) / 2;
             mergeSort(A, p, q);
@@ -59,7 +59,7 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        Array A = new Array();
+        List A = new List();
         A.add(2);
         A.add(8);
         A.add(7);
@@ -72,6 +72,6 @@ public class MergeSort {
         int r = A.size() - 1;
         MergeSort ms = new MergeSort();
         ms.mergeSort(A, p, r);
-        A.print();
+        System.out.println(A);
     }
 }

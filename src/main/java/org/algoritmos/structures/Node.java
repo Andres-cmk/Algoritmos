@@ -3,7 +3,7 @@ package org.algoritmos.data_structures;
 public class Node<E> {
     Node<E> next;
     E value;
-    int index;
+    long index;
 
     public Node(E value) {
         next = null;
@@ -26,11 +26,11 @@ public class Node<E> {
         this.value = value;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(long index) {
         this.index = index;
     }
 
-    public int getIndex() {
+    public long getIndex() {
         return index;
     }
 }
