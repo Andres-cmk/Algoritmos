@@ -8,17 +8,17 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 // Arreglo estatico
-public class List<T> implements Iterable<T> {
+public class Array<T> implements Iterable<T> {
 
-    private Object[] list;
+    private Object[] array;
     private int size;
 
-    public List(){
+    public Array(){
         this(10);
     }
 
-    public List(int capacity){
-        this.list = new Object[capacity];
+    public Array(int capacity){
+        this.array = new Object[capacity];
         this.size = 0;
     }
 
@@ -31,30 +31,30 @@ public class List<T> implements Iterable<T> {
     }
 
     public int getCapacity() {
-        return this.list.length;
+        return this.array.length;
     }
 
     public void addArray(T e){
-        this.add(this.size, e);
+        this.addArray(this.size, e);
     }
 
-    public void add(int index,T e){
+    public void addArray(int index,T e){
 
-        if(this.size == this.list.length){
-            this.grow(); // Para arreglo dinamico
+        if(this.size == this.array.length){
+            throw new IllegalStateException("Array is full! Cannot add more elements.");
         }
 
         // Desplazamiento a la derecha
         for (int i = this.size - 1; i >= index; i--) {
-            this.list[i + 1] = this.list[i];
+            this.array[i + 1] = this.array[i];
         }
-        this.list[index] = e;
+        this.array[index] = e;
         size++;
     }
 
 
     private void grow(){
-        int oldCapacity = this.list.length;
+        int oldCapacity = this.array.length;
 
         int newCapacity = oldCapacity + (oldCapacity >> 1);
 
@@ -63,12 +63,12 @@ public class List<T> implements Iterable<T> {
         }
 
         Object[] temp = new Object[newCapacity];
-        System.arraycopy(this.list, 0, temp, 0, this.size);
-        this.list = temp;
+        System.arraycopy(this.array, 0, temp, 0, this.size);
+        this.array = temp;
     }
 
     public void clear(){
-        this.list = new Object[10];
+        this.array = new Object[10];
         this.size = 0;
     }
 
@@ -82,7 +82,7 @@ public class List<T> implements Iterable<T> {
         }
 
         for (int i = 0; i < this.size; i++) {
-            if(this.list[i].equals(e)){
+            if(this.array[i].equals(e)){
                 return i;
             }
         }
@@ -90,7 +90,7 @@ public class List<T> implements Iterable<T> {
     }
 
     public T get(int index){
-        return (T)this.list[index];
+        return (T)this.array[index];
     }
 
     public void remove(int index) {
@@ -101,11 +101,11 @@ public class List<T> implements Iterable<T> {
 
         // Desplazamiento a la izquierda
         for (int i = index + 1; i < this.size; i++) {
-            this.list[i - 1] = this.list[i];
+            this.array[i - 1] = this.array[i];
         }
 
         size--;             // 1. Primero reducimos el tamaño
-        this.list[size] = null; // 2. Luego limpiamos esa posición que quedó "sobrando"
+        this.array[size] = null; // 2. Luego limpiamos esa posición que quedó "sobrando"
     }
 
 
@@ -121,7 +121,7 @@ public class List<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         int size = this.size;
-        Object[] array = this.list;
+        Object[] array = this.array;
         return new Iterator<>() {
             int i = 0;
             @Override
@@ -146,7 +146,7 @@ public class List<T> implements Iterable<T> {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < this.size; i++){
-            sb.append(list[i]);
+            sb.append(array[i]);
             if (i != size - 1){
                 sb.append(", ");
             }
@@ -155,4 +155,14 @@ public class List<T> implements Iterable<T> {
         return sb.toString();
     }
 
+
+    public static void main(String[] args) {
+        Array<Integer> array = new Array<>(12);
+        for (int i = 0; i < array.getCapacity(); i++){
+            array.addArray(i);
+        }
+        System.out.println(array.size());
+
+        System.out.println(array);
+    }
 }
