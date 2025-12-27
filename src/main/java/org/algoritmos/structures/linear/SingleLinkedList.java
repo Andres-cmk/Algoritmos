@@ -235,4 +235,17 @@ public class SingleLinkedList<T extends  Comparable<T>> implements Iterable<T>{
         return min;
     }
 
+    // O(1)
+    // Igualamos ambos punteros a null y el recolector de basura de java lo elimina de la memoria.
+    public void clear() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
+    //O(n)
+    public boolean contains(T key) {
+        return findKey(key);
+    }
+
 }
