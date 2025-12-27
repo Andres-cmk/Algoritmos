@@ -248,4 +248,21 @@ public class SingleLinkedList<T extends  Comparable<T>> implements Iterable<T>{
         return findKey(key);
     }
 
+    // O(n)
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+
+        if (index == this.size - 1) return tail.getValue();
+        if (index == 0) return head.getValue();
+
+        Node<T> node = this.head;
+        for (int i = 0; i < index; i++) {
+            node = node.getNext();
+        }
+        return node.getValue();
+
+    }
+
 }
