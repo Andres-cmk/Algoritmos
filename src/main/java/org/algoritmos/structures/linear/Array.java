@@ -5,10 +5,11 @@
 package org.algoritmos.structures.linear;
 
 import java.util.Iterator;
+import java.util.RandomAccess;
 import java.util.function.Consumer;
 
 // Arreglo estatico
-public class Array<T> implements Iterable<T> {
+public class Array<T> implements Iterable<T>, RandomAccess {
 
     private Object[] array;
     private int size;
