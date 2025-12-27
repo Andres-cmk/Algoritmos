@@ -9,10 +9,11 @@ import java.util.function.Consumer;
 
 public class DoublyLinkedList<T extends Comparable<T>> implements Iterable<T> {
 
-    // A diferencia de la simplemente enlazada, vamos a guardar en memoria un puntero que guarda el predecesor
-    // del nodo en cuestión
+    /**
+     * A diferencia de la simplemente enlazada, vamos a guardar en memoria un puntero que guarda el predecesor
+     * del nodo en cuestión
+     * Para este caso usaremos la clase Node con una modificacion de la clase Node del paquete org.algoritmos.structures.Node.java*/
 
-    // Para este caso usaremos la clase Node con una modificacion de la clase Node del paquete org.algoritmos.structures.Node.java
     private static class Node<T> {
          T data;
          Node<T> next, prev;
