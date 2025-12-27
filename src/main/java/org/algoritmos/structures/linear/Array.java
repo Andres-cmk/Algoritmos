@@ -155,14 +155,4 @@ public class Array<T> implements Iterable<T> {
         return sb.toString();
     }
 
-
-    public static void main(String[] args) {
-        Array<Integer> array = new Array<>(12);
-        for (int i = 0; i < array.getCapacity(); i++){
-            array.addArray(i);
-        }
-        System.out.println(array.size());
-
-        System.out.println(array);
-    }
 }
