@@ -263,6 +263,15 @@ public class DoublyLinkedList<T extends Comparable<T>> implements Iterable<T> {
         return -1;
     }
 
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Index: " + index + ", Size: " + size);
+        }
+
+        Node<T> node = this.getNode(index);
+        return node.data;
+    }
+
 
     @Override
     public String toString() {
