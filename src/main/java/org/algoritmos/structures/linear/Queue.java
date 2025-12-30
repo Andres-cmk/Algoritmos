@@ -4,6 +4,8 @@
 package org.algoritmos.structures.linear;
 
 
+import java.util.NoSuchElementException;
+
 public class Queue<T extends Comparable<T>> {
 
     private final SingleLinkedList<T> internalList;
@@ -22,6 +24,7 @@ public class Queue<T extends Comparable<T>> {
     }
 
     public T peek() {
+        if (this.internalList.isEmpty()) throw new NoSuchElementException("Queue is empty");
         return this.internalList.topFront();
     }
 
