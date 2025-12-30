@@ -268,14 +268,53 @@ public class DoublyLinkedList<T extends Comparable<T>> implements Iterable<T> {
             throw new IllegalArgumentException("Index: " + index + ", Size: " + size);
         }
 
-        Node<T> node = this.getNode(index);
-        return node.data;
+        return getNode(index).data;
+    }
+
+    public boolean contains(T key) {
+        if (isEmpty()) throw new NoSuchElementException("List is empty");
+        return indexOf(key) != -1;
+    }
+
+    public T maxElement() {
+        if (isEmpty()) throw new NoSuchElementException("List is empty");
+
+        T max = head.data;
+        Node<T> current = head.next; // Empezamos a comparar desde el segundo
+
+        while (current != null) {
+            // Si current > max, actualizamos max
+            if (current.data.compareTo(max) > 0) {
+                max = current.data;
+            }
+            current = current.next;
+        }
+        return max;
+    }
+
+    public T minElement() {
+
+        if (isEmpty()) throw new NoSuchElementException("List is empty");
+
+        // Asumimos que el primero es el mínimo provisionalmente
+        T min = head.data;
+        Node<T> current = head.next;
+
+        while (current != null) {
+            // Si current < min, actualizamos min
+            if (current.data.compareTo(min) < 0) {
+                min = current.data;
+            }
+            current = current.next;
+        }
+        return min;
     }
 
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        if (head == null) return "[]";
         sb.append("[");
         Node<T> current = head;
         while (current != null){
