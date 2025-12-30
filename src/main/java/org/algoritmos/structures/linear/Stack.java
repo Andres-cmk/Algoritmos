@@ -4,6 +4,8 @@
 
 package org.algoritmos.structures.linear;
 
+import java.util.NoSuchElementException;
+
 public class Stack<T extends Comparable<T>>{
 
     private final SingleLinkedList<T> internalList;
@@ -21,6 +23,7 @@ public class Stack<T extends Comparable<T>>{
     }
 
     public T peek() {
+        if (this.internalList.isEmpty()) throw new NoSuchElementException("Stack is empty");
         return this.internalList.topFront();
     }
 
