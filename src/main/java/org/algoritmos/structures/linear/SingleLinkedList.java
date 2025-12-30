@@ -265,4 +265,23 @@ public class SingleLinkedList<T extends  Comparable<T>> implements Iterable<T>{
 
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        if (isEmpty()) return "[]";
+
+        sb.append("[");
+        Node<T> current = head;
+        while (current != null) {
+            sb.append(current.getValue());
+            if (current.getNext() != null) {
+                sb.append("->");
+            }
+            current = current.getNext();
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
