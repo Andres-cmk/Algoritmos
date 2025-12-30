@@ -1,8 +1,45 @@
-
 /**
  * @autor Andres Ramirez (Andres-cmk)
  */
+
 package org.algoritmos.structures.linear;
 
-public class Stack {
+public class Stack<T extends Comparable<T>>{
+
+    private final SingleLinkedList<T> internalList;
+
+    public Stack() {
+        this.internalList = new SingleLinkedList<>();
+    }
+
+    public void push(T element) {
+        this.internalList.pushFront(element);
+    }
+
+    public T pop() {
+        return this.internalList.popFront();
+    }
+
+    public T peek() {
+        return this.internalList.topFront();
+    }
+
+    public boolean isEmpty() {
+        return this.internalList.isEmpty();
+    }
+
+    public int size() {
+        return this.internalList.size();
+    }
+
+    public void clear() {
+        this.internalList.clear();
+    }
+
+    @Override
+    public String toString() {
+        return this.internalList.toString();
+    }
+
+
 }
