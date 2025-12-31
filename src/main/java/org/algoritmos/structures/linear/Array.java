@@ -18,6 +18,11 @@ public class Array<T> implements Iterable<T>, RandomAccess {
         this(10);
     }
 
+    public Array(Object[] array){
+        this.array = array;
+        this.size = this.array.length;
+    }
+
     public Array(int capacity){
         this.array = new Object[capacity];
         this.size = 0;
@@ -92,6 +97,10 @@ public class Array<T> implements Iterable<T>, RandomAccess {
 
     public T get(int index){
         return (T)this.array[index];
+    }
+
+    public void set(int index,T e){
+        this.array[index] = e;
     }
 
     public void remove(int index) {
