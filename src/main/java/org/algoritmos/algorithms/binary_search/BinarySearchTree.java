@@ -1,4 +1,4 @@
-package org.algoritmos.data_structures.Trees;
+package org.algoritmos.algorithms.binary_search;
 
 public class BinarySearchTree {
 
@@ -119,6 +119,7 @@ public class BinarySearchTree {
     3. Si el nodo a eliminar tiene 2 hijos, Buscamos un sucesor del nodo a eliminar
      */
 
+    /**
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         bst.treeInsertion(bst, new TreeNode(18));
@@ -138,4 +139,5 @@ public class BinarySearchTree {
         System.out.println("Sucesor de 15 es: " + bst.treeSuccessor(node_15).data);
         System.out.println("Predecesor de 15 es: " + bst.treePredecessor(node_15).data);
     }
+     */
 }

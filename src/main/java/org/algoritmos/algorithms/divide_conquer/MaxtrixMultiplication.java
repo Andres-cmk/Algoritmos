@@ -1,4 +1,4 @@
 package org.algoritmos.algorithms.divide_conquer;
 
-public class MaxtrixMulti {
+public class MaxtrixMultiplication {
 }
