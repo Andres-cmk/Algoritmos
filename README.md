@@ -72,7 +72,7 @@ src/
 │       │   │   ├── all_pairs_shortest_path/  # FloydWarshall, Johnson
 │       │   │   ├── minium_spanning_tree/     # Kruskal, Prim
 │       │   │   └── single_source_shortest_path/ # Dijkstra, BellmanFord
-│       │   ├── random_algorithms/   # RandomQuickSort
+│       │   ├── random_algorithms/   # RandomizedQuickSort
 │       │   └── sorting/
 │       │       ├── linear_sorting/  # Bucket, Counting, Radix
 │       │       └── ...              # HeapSort, BubbleSort, etc.
