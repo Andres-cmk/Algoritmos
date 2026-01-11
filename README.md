@@ -45,7 +45,7 @@ Ubicación: `src/main/java/org/algoritmos/algorithms`
 | Categoría | Algoritmo | Descripción |
 | :--- | :--- | :--- |
 | **Sorting** | `Bubble`, `Insertion`, `Selection` | Algoritmos de ordenamiento elementales. |
-| | `MergeSort`, `QuickSort` | Ordenamiento eficiente ($O(n \log n)$). |
+| | `MergeSort`, `QuickSort` | Ordenamiento eficiente $O(n \log n)$. |
 | | `HeapSort` | Ordenamiento basado en estructura Heap. |
 | | `Linear Sorting` | BucketSort, CountingSort, RadixSort. |
 | **Búsqueda** | `BinarySearchTree` | Búsqueda binaria en estructuras de árbol. |
