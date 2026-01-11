@@ -4,6 +4,7 @@
 
 package org.algoritmos.structures.linear;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.RandomAccess;
 import java.util.function.Consumer;
@@ -153,16 +154,7 @@ public class Array<T> implements Iterable<T>, RandomAccess {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < this.size; i++){
-            sb.append(array[i]);
-            if (i != size - 1){
-                sb.append(", ");
-            }
-        }
-        sb.append("]");
-        return sb.toString();
+        return Arrays.toString(this.array);
     }
 
 }
