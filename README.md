@@ -1,4 +1,4 @@
-# ☕ Java Data Structures & Algorithms
+# ☕ Estructuras de datos y Algoritmos en Java
 
 > **Implementación profunda de Estructuras de Datos y Algoritmos en Java.**
 
