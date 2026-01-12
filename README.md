@@ -70,8 +70,12 @@ src/
 │       │   ├── divide_conquer/      # MergeSort, QuickSort, Strassen...
 │       │   ├── dynamic_programming/
 │       │   │   ├── all_pairs_shortest_path/  # FloydWarshall, Johnson
+|       |   |   ├── maximum_sum/ # Kadane
 │       │   │   ├── minium_spanning_tree/     # Kruskal, Prim
 │       │   │   └── single_source_shortest_path/ # Dijkstra, BellmanFord
+|       |   └── pathfinding/        <--- ¡NUEVA CARPETA!
+                ├── AStar.java
+                └── Heuristic.java  (Interfaz necesaria para A*)
 │       │   ├── random_algorithms/   # RandomizedQuickSort
 │       │   └── sorting/
 │       │       ├── linear_sorting/  # Bucket, Counting, Radix
