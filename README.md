@@ -56,7 +56,7 @@ Ubicación: `src/main/java/org/algoritmos/algorithms`
 | | **Shortest Path (Single)** | Dijkstra, Bellman-Ford. |
 | | **MST** | Kruskal, Prim (Minimum Spanning Tree). |
 | | **Graph Traversal** | BFS (Anchura), DFS (Profundidad). |
-
+| | **Kadane** | Maxima suma de un subarreglo. |
 ---
 
 ## 📂 Estructura del Proyecto
