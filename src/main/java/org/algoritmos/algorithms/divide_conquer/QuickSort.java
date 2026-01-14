@@ -118,4 +118,28 @@ public class QuickSort {
         System.out.println("# de comparaciones del arreglo: " + com);
     }
 
+    /**
+     * <p> Este algoritmo tiene una particularidad y es que escoger el pivote correcto hace que el algoritmo tenga tanto
+     * el mejor o peor comportamiento. </p>
+     *
+     * <p>
+     * Por ejemplo:
+     * Para este caso el algoritmo esta tomando como pivote el ultimo elemento, entonces si el arreglo a ordenar es:
+     * [1, 2, 3, 4, 5], Se compara todos son menores que 5 y la partición te queda un subgrupo de 4 elementos a la izquierda y 0 a la derecha.
+     * luego: el siguiente paso se toma el subgrupo [1, 2, 3, 4]. Pivote: 4.
+     *
+     * ¿ Que sucede ?
+     *
+     * En lugar de dividir el problema a la mitad (divide y venderas), si va descartando un elemento a la vez,
+     * siendo esto que el pivote se compara con todos los elementos exepto el mismo y se crea la complejidad de O(n^2).
+     *</p>
+     *
+     * <P>
+     *     Para este caso se creo una "alteración" del algoritmo que elige un privote al azar,
+     *     rompiendo el patron que traiga el arreglo. Entonces la complejidad se da a O(n lg n).
+     *
+     *     En este proyecto también esta implementado esta alteración.
+     * </P>
+     *
+     */
 }
