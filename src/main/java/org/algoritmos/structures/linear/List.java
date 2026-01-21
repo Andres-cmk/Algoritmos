@@ -38,6 +38,27 @@ public class List<T> implements Iterable<T> {
         this.add(this.size, e);
     }
 
+    public void set(int index, T e) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        this.list[index] = e;
+    }
+
+
+    @SafeVarargs // Suprime advertencias de seguridad de tipos con genéricos
+    public static <T> List<T> of(T... elements) {
+        // 1. Creamos la lista con la capacidad exacta para no desperdiciar memoria
+        List<T> newList = new List<>(elements.length);
+
+        // 2. Recorremos los elementos que nos pasaron y los agregamos
+        for (T e : elements) {
+            newList.addArray(e);
+        }
+
+        return newList;
+    }
+
     public void add(int index,T e){
 
         if(this.size == this.list.length){
