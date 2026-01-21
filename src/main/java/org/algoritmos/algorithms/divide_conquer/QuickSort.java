@@ -52,7 +52,7 @@ public class QuickSort {
      * @return El índice final donde quedó ubicado el pivote.
      */
 
-    static int partition(Array<Integer> arr, int p, int r) {
+    private static int partition(Array<Integer> arr, int p, int r) {
 
         // Para este caso, elegimos el pivote como el ultimo elemento.
         int pivot = arr.get(r);
