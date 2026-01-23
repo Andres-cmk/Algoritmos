@@ -307,12 +307,4 @@ public class List<T> implements Iterable<T>, RandomAccess {
         return uniqueList;
     }
 
-
-
-    public static void main(String[] args) {
-        List<Double> precios = List.of(100.0, 20.0, 50.5, 200.0, 15.0);
-        List<String> testString = List.of("mora", "fresa", "frambuesa", "mora");
-        List<String> uniq = testString.distinct();
-        System.out.println(uniq);
-    }
 }
