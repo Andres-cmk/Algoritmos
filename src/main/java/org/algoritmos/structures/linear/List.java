@@ -4,11 +4,19 @@
 
 package org.algoritmos.structures.linear;
 
-import java.util.Iterator;
-import java.util.function.Consumer;
 
-// Arreglo estatico
-public class List<T> implements Iterable<T> {
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.RandomAccess;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+
+// Arreglo Dinamico
+public class List<T> implements Iterable<T>, RandomAccess {
 
     private Object[] list;
     private int size;
@@ -176,4 +184,135 @@ public class List<T> implements Iterable<T> {
         return sb.toString();
     }
 
+    // =================================================================
+    //                 FUNCTIONAL API (ESTILO STREAM)
+    // =================================================================
+
+
+    /**
+     * FILTER: Filtra elementos según una condición.
+     * Equivalente a: Stream.filter()
+     * @param p Condición que debe cumplir el elemento (devuelve true/false).
+     * @return Una NUEVA lista solo con los elementos que pasaron la prueba.
+     */
+    public List<T> filter(Predicate<T> p){
+
+        List<T> result = new List<T>();
+        for (int i = 0; i < this.size; i++){
+            T e = (T)list[i];
+            if (p.test(e)){
+                result.addArray(e);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * MAP: Transforma cada elemento en otro tipo de dato.
+     * Equivalente a: Stream.map()
+     * * @param mapper Función que convierte de T (tipo actual) a R (nuevo tipo).
+     * @param <R> El tipo de dato de la nueva lista.
+     * @return Una NUEVA lista de tipo <R>.
+     */
+    public <R> List<R> map(Function<T,R> f){
+
+        List<R> result = new List<R>();
+        for (int i = 0; i < this.size; i++){
+            R transformed = f.apply((T)list[i]);
+            result.addArray(transformed);
+        }
+        return result;
+    }
+
+
+    /**
+     * REDUCE: Combina todos los elementos en un solo resultado.
+     * Equivalente a: Stream.reduce()
+     * * @param identity Valor inicial (ej. 0 para sumas, "" para textos).
+     * @param accumulator Función que combina dos valores (el acumulado y el actual).
+     * @return El resultado final acumulado.
+     */
+    public T reduce(T i, BinaryOperator<T> accumulator){
+        T result = i;
+        for (int j = 0; j < this.size(); j++){
+            result = accumulator.apply(result, (T) list[j]);
+        }
+        return result;
+    }
+
+    /**
+     * Es una operación terminal que dado un conjunto de elemento cumpla con la condición dado.
+     * @param p Condición que debe cumplir el elemento (devuelve true/false).
+     * @return true si al menos un elemento cumple con la condición dada, en otro caso
+     * retorna false.
+     */
+    public boolean anyMatch(Predicate<T> p){
+        boolean  result = false;
+        for (int i = 0; i < this.size; i++){
+            result |= p.test((T)list[i]);
+        }
+        return  result;
+    }
+
+    /**
+     * Metodo que evalua si todos los elementos del conjunto cumplen con la condición dada por el
+     * predicate.
+     *
+     * @param p Condición que debe cumplir el elemento (devuelve true/false).
+     * @return true si todos los elementos del conjunto cumplen con la condición, en otro caso
+     * retorna false.
+     */
+    public boolean allMatch(Predicate<T> p){
+        for (int i = 0; i < this.size; i++){
+            if(!p.test((T)list[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Devuelve una secuencia que consta de los elementos. El metodo trunca para que
+     * los elementos no supere maxSize.
+     * @param maxSize El numero de elementos a truncar.
+     * @return Retorna el conjunto de elementos truncados. El caso donde el maxSize supere a this.size,
+     * entonces devuelve todos los elementos del conjunto en cuestión.
+     */
+
+    public List<T> limit(int maxSize){
+        int actualInt = (maxSize < this.size()) ? maxSize : this.size;
+        List<T> newList = new List<>(actualInt);
+        for (int i = 0; i < actualInt; i++){
+            newList.addArray(this.get(i));
+        }
+
+        if (actualInt == maxSize) System.out.println("Se devolvio todos los elementos del arreglo.");
+
+        return newList;
+    }
+
+    /**
+     *
+     * Metodo para eliminar elementos del conunto que se encuentran 2 o mas veces en el mismo conjunto.
+     * @return Retorna un nuevo conjunto pero sin elemento duplicados.
+     */
+    public List<T> distinct (){
+        List<T> uniqueList = new List<>();
+        for (int i = 0; i < this.size; i++){
+            T item =  (T) list[i];
+            if (!uniqueList.contains(item)){
+                uniqueList.addArray(item);
+            }
+        }
+        return uniqueList;
+    }
+
+
+
+    public static void main(String[] args) {
+        List<Double> precios = List.of(100.0, 20.0, 50.5, 200.0, 15.0);
+        List<String> testString = List.of("mora", "fresa", "frambuesa", "mora");
+        List<String> uniq = testString.distinct();
+        System.out.println(uniq);
+    }
 }
