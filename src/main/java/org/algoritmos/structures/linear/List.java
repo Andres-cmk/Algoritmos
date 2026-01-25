@@ -307,4 +307,54 @@ public class List<T> implements Iterable<T>, RandomAccess {
         return uniqueList;
     }
 
+
+    /**
+     * Retorna una nueva lista que contiene una porción de la original.
+     * Funciona como el slicing de Python: [fromIndex, toIndex).
+     *
+     * @param fromIndex Índice inicial (inclusivo).
+     * @param toIndex Índice final (exclusivo).
+     * @return Una nueva lista con los elementos copiados.
+     * @throws IndexOutOfBoundsException si los índices son inválidos.
+     */
+
+    public List<T> subList(int fromIndex, int toIndex){
+
+        if (fromIndex < 0) throw new IndexOutOfBoundsException("From index: " + fromIndex);
+        if (toIndex > this.size()) throw new IndexOutOfBoundsException("toIndex: " + toIndex + " es mayor al tamaño: " + this.size);
+        if (fromIndex > toIndex) throw new IllegalArgumentException("fromIndex(" + fromIndex + ") no puede ser mayor que toIndex(" + toIndex + ")");
+
+        int newSize = toIndex - fromIndex;
+        if (newSize < 1) return new List<>(0);
+
+        List<T> result = new List<>(newSize);
+        for (int i = fromIndex; i < toIndex; i++){
+            result.addArray((T) this.list[i]);
+        }
+
+        return result;
+    }
+
+
+    // Clase especifica para trabajar con matrices
+    // Util cuando se va a trabajar con algunos algoritmos como Strassen.
+    static class MatrixUtils {
+        /**
+         * Extrae una sub-matriz de una matriz dada.
+         * @param matrix La matriz original (List de List).
+         * @param r1 Fila inicial (inclusive)
+         * @param r2 Fila final (exclusive)
+         * @param c1 Columna inicial (inclusive)
+         * @param c2 Columna final (exclusive)
+         * @return Una nueva matriz recortada.
+         */
+        public static <T> List<List<T>> subMatrix(List<List<T>> matrix, int r1, int r2, int c1, int c2) {
+            // 1. Primero obtenemos las filas deseadas
+            List<List<T>> rows = matrix.subList(r1, r2);
+
+            // 2. A cada fila, la recortamos para quedarnos con las columnas
+            return rows.map(row -> row.subList(c1, c2));
+        }
+    }
+
 }
