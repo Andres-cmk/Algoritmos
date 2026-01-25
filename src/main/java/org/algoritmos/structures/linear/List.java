@@ -338,7 +338,7 @@ public class List<T> implements Iterable<T>, RandomAccess {
 
     // Clase especifica para trabajar con matrices
     // Util cuando se va a trabajar con algunos algoritmos como Strassen.
-    static class MatrixUtils {
+    public static class MatrixUtils {
         /**
          * Extrae una sub-matriz de una matriz dada.
          * @param matrix La matriz original (List de List).
