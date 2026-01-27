@@ -50,7 +50,7 @@ Ubicación: `src/main/java/org/algoritmos/algorithms`
 | | `Linear Sorting` | BucketSort, CountingSort, RadixSort. |
 | **Búsqueda** | `BinarySearchTree` | Búsqueda binaria en estructuras de árbol. |
 | **Divide & Conquer** | `MaximalSubArray` | Problema del subarreglo máximo. |
-| | `MatrixMultiplication` | Multiplicación de matrices clásica. |
+| | `MatrixMultiplicationRecursive` | Multiplicación de matrices clásica. |
 | | `Strassen` | Multiplicación optimizada de matrices. |
 | **Dynamic Prog.** | **Shortest Path (All Pairs)** | Floyd-Warshall, Johnson. |
 | | **Shortest Path (Single)** | Dijkstra, Bellman-Ford. |
