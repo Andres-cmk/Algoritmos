@@ -22,7 +22,7 @@ public class Strassen {
     private static int nextPowerOfTwo(int n) {
         int power = 1;
         while (power < n) {
-            power *= 1 << power;
+            power = power << 1;
         }
         return power;
     }
@@ -188,25 +188,28 @@ public class Strassen {
     }
 
 
-    public static List<List<Double>> strassen(List<List<Double>> A, List<List<Double>> B) {
+    public static List<List<Double>> strassenCheck(List<List<Double>> A, List<List<Double>> B) {
 
-        int n =  A.size();
-        int m = nextPowerOfTwo(n);
+        int rowsA = A.size(); int colsA = A.get(0).size();
+        int rowsB = B.size(); int colsB = B.get(0).size();
 
-        // Si n NO es potencia de 2 (ej: 3), rellenamos hasta m (ej: 4)
-        if (n != m) {
-            List<List<Double>> APadded = padMatrix(A, m);
-            List<List<Double>> BPadded = padMatrix(B, m);
+        // revisamos el caso donde las matrices son nxn
+        if ((rowsA == colsA) && (rowsB == colsB)) return strassenRecursive(A, B);
 
-            // Calculamos recursivamente con las matrices "arregladas"
-            List<List<Double>> CPadded = strassenRecursive(APadded, BPadded);
+        // revisamos si las matrices cumplen las condiciones para la multiplicación
+        if (colsA != rowsB) throw new IllegalArgumentException("Las dimensiones de las matrices no soportan multiplicación");
 
-            // Recortamos el resultado para devolver el tamaño original (3x3)
-            return MatrixUtils.subMatrix(CPadded, 0, n, 0, n);
-        } else {
-            // Si ya es potencia de 2, pasamos directo
-            return strassenRecursive(A, B);
-        }
+        // Si no se cumple de las otras condiciones.
+        // ejecutamos el algoritmo.
+        int maxSize = Math.max(Math.max(rowsA, colsA), Math.max(rowsB, colsB));
+        int m = nextPowerOfTwo(maxSize);
+
+        List<List<Double>> APadded = padMatrix(A, m);
+        List<List<Double>> BPadded = padMatrix(B, m);
+
+        List<List<Double>> C = strassenRecursive(APadded, BPadded);
+
+        return MatrixUtils.subMatrix(C, 0, rowsA, 0, colsB);
 
     }
 
@@ -225,7 +228,7 @@ public class Strassen {
                 List.of(0.0, 0.0, 1.0, 1.2)
         );
 
-        List<List<Double>> C = Strassen.strassen(A, B);
+        List<List<Double>> C = Strassen.strassenCheck(A, B);
         C.forEach(System.out::println);
     }
 }
