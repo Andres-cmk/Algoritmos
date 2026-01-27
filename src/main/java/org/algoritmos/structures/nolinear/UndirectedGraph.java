@@ -1,4 +1,4 @@
 package org.algoritmos.structures.nolinear;
 
-public class Graph {
+public class UndirectedGraph {
 }
